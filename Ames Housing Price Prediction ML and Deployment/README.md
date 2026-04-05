@@ -110,7 +110,9 @@ cd <repository-folder>
 
 ### 2. Create virtual environment
 python -m venv .venv
+
 source .venv/bin/activate   # Linux/macOS
+
  .venv\Scripts\activate    # Windows
 
 ### 3. Run notebook
