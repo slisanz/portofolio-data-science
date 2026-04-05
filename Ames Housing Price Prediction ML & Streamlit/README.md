@@ -1,8 +1,8 @@
- <img src="./streamlit%20testing%20images/test1.jpg" alt="Test 1" width="1000"/>
+ <img src="./streamlit%20testing%20images/test1.jpg" alt="Test 1" width="500"/>
 
 *Test 1: Streamlit testing*
 
-<img src="./streamlit%20testing%20images/test2.jpg" alt="Test 2" width="1000"/>
+<img src="./streamlit%20testing%20images/test2.jpg" alt="Test 2" width="500"/>
 
 *Test 2: Streamlit testing*
  
