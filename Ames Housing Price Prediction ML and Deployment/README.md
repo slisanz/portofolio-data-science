@@ -29,8 +29,6 @@ The dataset contains information about:
 - Year built and year remodeled
 - Categorical features (neighborhood, house style, etc.)
 
----
-
 ## Data Preprocessing & Feature Engineering
 
 - Dropped non‑informative columns (`Order`, `PID`)
@@ -42,8 +40,6 @@ The dataset contains information about:
   - `HouseAge` = Yr Sold – Year Built
   - `IsRemodeled` = 1 if Year Remod/Add ≠ Year Built else 0
   - `TotalBath` = sum of full/half bathrooms (including basement)
-
----
 
 ## Modeling
 
@@ -65,8 +61,6 @@ Four regression models were trained and evaluated using **MAE**, **RMSE**, and *
 | **Test R²** | 0.9229 |
 
 The model explains **92.3%** of the variance in house prices.
-
----
 
 ### Feature Importance
 
