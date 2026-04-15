@@ -20,6 +20,9 @@ Proyek ini membangun orkestra itu dari nol, menggunakan **MovieLens `ml-latest`*
 
 Ukuran data cukup besar untuk membuat pendekatan "load ke Pandas lalu fit scikit-learn" menjadi tidak praktis, namun cukup kecil untuk dieksekusi tanpa cluster — sweet spot sempurna untuk menunjukkan keahlian *scaling*.
 
+> **Dataset tidak ikut di-commit** (ukuran ~1.5 GB). Unduh manual dari GroupLens:
+> <https://grouplens.org/datasets/movielens/latest/> (pilih `ml-latest.zip`), lalu ekstrak ke folder `ml-latest/` di root proyek sebelum menjalankan pipeline.
+
 ---
 
 ## Apa Yang Dibangun
