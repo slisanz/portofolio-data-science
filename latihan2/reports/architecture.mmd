@@ -1,0 +1,61 @@
+flowchart LR
+  subgraph Data_Layer
+    CSV[ml-latest CSV<br/>33.8M ratings + 14M tags]
+    Parquet[Polars + Parquet<br/>partisi per-tahun 1995-2023]
+    CSV --> Parquet
+  end
+
+  subgraph Feature_Store
+    UF[user_features.parquet<br/>331K x 46 kolom]
+    IF[item_features.parquet<br/>83K x 30 kolom]
+    GE[genome_embedding.parquet<br/>1128-dim per film]
+    SP[splits train/val/test<br/>leave-last-2-out]
+    Parquet --> UF
+    Parquet --> IF
+    Parquet --> GE
+    Parquet --> SP
+  end
+
+  subgraph Classical_Models
+    BL[Baseline: GlobalMean / UserMean / ItemMean / Popularity]
+    KN[Item-kNN / User-kNN cosine]
+    MF[ALS / BPR / SVD-svds]
+    CB[Content-based genome cosine]
+    HY[Hybrid weighted alpha ALS + 1-alpha Content]
+  end
+
+  subgraph Deep_Models
+    NCF[NCF: GMF + MLP + NeuMF]
+    TT[Two-Tower: user/item encoder + FAISS IP]
+    SR[SASRec transformer kausal]
+  end
+
+  subgraph NLP_Pipeline
+    CL[Clean + lemmatize tags]
+    BT[BERTopic 94 topik]
+    ST[SBERT MiniLM 384-dim]
+    UM[UMAP + HDBSCAN genome]
+  end
+
+  UF --> Classical_Models
+  IF --> Classical_Models
+  GE --> CB
+  SP --> Classical_Models
+  SP --> Deep_Models
+  UF --> Deep_Models
+  IF --> Deep_Models
+
+  Classical_Models --> EV[Evaluator<br/>RMSE MAE NDCG MAP MRR<br/>Coverage Diversity Novelty Serendipity]
+  Deep_Models --> EV
+  NLP_Pipeline --> EV
+
+  TT -->|export| ART[(two_tower_faiss.index<br/>user.npy / item.npy<br/>TorchScript)]
+  ST -->|export| TXT[(movie_text.faiss<br/>384-dim)]
+
+  ART --> API[FastAPI<br/>/health /recommend /similar<br/>/cold_start /semantic]
+  TXT --> API
+  API --> UI[Streamlit Dashboard<br/>EDA - Recommender - Search - Arena]
+  API --> DOC[OpenAPI /docs]
+
+  EV --> RP[reports/figures<br/>31 figur + CSV bench]
+  RP --> PDF[portfolio_report.pdf]

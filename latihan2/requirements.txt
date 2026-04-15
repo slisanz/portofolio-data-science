@@ -1,0 +1,49 @@
+# Core data
+polars>=1.0.0
+pandas>=2.2.0
+numpy>=1.26.0
+pyarrow>=16.0.0
+scipy>=1.13.0
+
+# Modeling - classical
+scikit-learn>=1.5.0
+scikit-surprise>=1.1.4
+implicit>=0.7.2
+
+# Modeling - deep learning
+torch>=2.3.0
+sentence-transformers>=3.0.0
+faiss-cpu>=1.8.0
+
+# NLP
+bertopic>=0.16.0
+umap-learn>=0.5.6
+hdbscan>=0.8.33
+nltk>=3.8.1
+wordcloud>=1.9.3
+networkx>=3.3
+
+# Viz
+matplotlib>=3.9.0
+seaborn>=0.13.2
+plotly>=5.22.0
+
+# Serving
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+streamlit>=1.35.0
+
+# Tracking & experiment
+mlflow>=2.13.0
+
+# Utilities
+tqdm>=4.66.0
+python-dotenv>=1.0.1
+joblib>=1.4.0
+papermill>=2.6.0
+
+# Quality
+ruff>=0.4.0
+pytest>=8.2.0
+pytest-cov>=5.0.0

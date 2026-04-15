@@ -1,0 +1,39 @@
+# --- Environment & caches ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- Datasets mentah & turunan (terlalu besar untuk Git) ---
+ml-latest/
+data/processed/
+data/samples/
+
+# --- Artefak model besar ---
+*.pt
+*.npy
+*.index
+*.faiss
+
+# --- Laporan auto-generated HTML (PDF di-commit manual bila mau) ---
+reports/portfolio_report.html
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Catatan lokal ---
+memory/
+
+# --- Logs & temp ---
+*.log
+tmp/

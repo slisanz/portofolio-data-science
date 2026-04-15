@@ -1,0 +1,28 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/serve/Dockerfile
+    image: movielens-recsys-api:latest
+    container_name: movielens-api
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  app:
+    image: python:3.11-slim
+    container_name: movielens-streamlit
+    depends_on:
+      - api
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      API_URL: http://api:8000
+    command: bash -lc "pip install --no-cache-dir streamlit==1.36.* requests plotly polars pyarrow && streamlit run app/streamlit_app.py --server.address 0.0.0.0 --server.port 8501"
+    ports:
+      - "8501:8501"
