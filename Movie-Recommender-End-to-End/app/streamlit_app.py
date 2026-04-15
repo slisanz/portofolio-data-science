@@ -40,10 +40,11 @@ def load_classical_bench() -> pd.DataFrame:
 @st.cache_data(show_spinner=False)
 def load_item_features() -> pd.DataFrame:
     p = PROC / "item_features.parquet"
-    cols = ["movieId", "rating_count", "rating_mean", "year"]
+    cols = ["movieId", "n_ratings", "mean_rating", "release_year"]
     df = pl.read_parquet(p)
     keep = [c for c in cols if c in df.columns]
-    return df.select(keep).to_pandas()
+    out = df.select(keep).to_pandas()
+    return out.rename(columns={"n_ratings": "rating_count", "mean_rating": "rating_mean", "release_year": "year"})
 
 
 @st.cache_resource(show_spinner=True)

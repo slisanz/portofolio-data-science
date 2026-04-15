@@ -7,7 +7,10 @@ scipy>=1.13.0
 
 # Modeling - classical
 scikit-learn>=1.5.0
-scikit-surprise>=1.1.4
+# scikit-surprise butuh C compiler (MSVC di Windows) dan sering gagal build.
+# Sudah digantikan oleh scipy.sparse.linalg.svds di src/models/mf.py — aman untuk di-skip.
+# Uncomment baris di bawah hanya jika kamu punya toolchain C++ dan ingin Surprise asli.
+# scikit-surprise>=1.1.4
 implicit>=0.7.2
 
 # Modeling - deep learning

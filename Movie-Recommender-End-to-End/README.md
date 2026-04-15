@@ -159,12 +159,35 @@ GitHub Actions (`.github/workflows/ci.yml`) menjalankan ruff + pytest + docker b
 
 ### Fase 8 — Dashboard Interaktif
 
-Empat tab Streamlit + Plotly yang menyatukan semuanya dalam satu browser tab:
+Empat tab Streamlit + Plotly yang menyatukan semuanya dalam satu browser tab. Screenshot masing-masing tab ada di folder [`DASHBOARD/`](./DASHBOARD/).
 
-- **EDA Explorer** — filter tahun rilis, multi-genre, minimum rating count. Scatter plotly popularitas vs mean rating (hover menampilkan judul), tabel top-20, galeri 18 figur statis.
-- **Recommender** — dua mode. Mode User ID: pilih user dari sampel training → top-K dari Two-Tower. Mode Cold-start: pilih film favorit → pseudo-user mean embedding → top-K.
-- **Semantic Search** — input natural-language → FAISS teks MiniLM → daftar film.
-- **Model Arena** — tabel `final_benchmark.csv` lengkap, radar plotly interaktif (pilih metrik yang ingin dibandingkan, normalisasi 0–1 per kolom), figur Fase 6.
+#### Tab 1 — EDA Explorer
+
+![EDA Explorer](./DASHBOARD/EDA%20Explorer.jpg)
+
+Eksplorasi katalog 83K film secara interaktif: slider rentang tahun rilis, multi-select genre (filter intersection), dan ambang minimum `rating_count` untuk memfilter film ekor-panjang. Tiga metrik ringkas di atas (jumlah film, rating rata-rata, total interaksi) diikuti scatter plot Plotly popularitas vs mean rating (hover menampilkan judul), tabel top-20, dan galeri 18 figur statis hasil EDA Fase 1–2.
+
+#### Tab 2 — Recommender
+
+![Recommender](./DASHBOARD/Recomender.jpg)
+
+Antarmuka dua mode untuk model Two-Tower yang sudah terekspor:
+- **Mode User ID** — pilih user dari sampel training, lihat top-K rekomendasi via FAISS `IndexFlatIP`.
+- **Mode Cold-start** — pilih beberapa film favorit, sistem menghitung pseudo-user mean embedding dari film tersebut, lalu melakukan retrieval FAISS. Meniru onboarding "pilih 3 artis yang kamu suka" ala Spotify.
+
+Latensi inferensi ~5 ms per request di CPU.
+
+#### Tab 3 — Semantic Search
+
+![Semantic Search](./DASHBOARD/Semantic%20Search.jpg)
+
+Input natural-language bebas (contoh: "mind-bending sci-fi thriller", "film Jepang tahun 90-an") → di-encode oleh sentence-transformer `all-MiniLM-L6-v2` (384-dim) → FAISS teks menemukan film dengan dokumen tag paling mirip secara semantik. Bekerja bahkan ketika kata query tidak pernah muncul di tag manapun.
+
+#### Tab 4 — Model Arena
+
+![Model Arena](./DASHBOARD/Model%20Arena.jpg)
+
+Perbandingan kuantitatif enam model utama (GlobalMean, ItemKNN, ALS, BPR, SVD, Content, Hybrid) pada sembilan metrik sekaligus. Tabel `final_benchmark.csv` lengkap ditampilkan paling atas, diikuti radar chart Plotly interaktif (user memilih metrik yang ingin dibandingkan, otomatis dinormalisasi 0–1 per kolom agar scalable), dan figur pendukung dari Fase 6 (cold-start per kuartil, ablation study).
 
 ---
 
@@ -195,7 +218,34 @@ Empat tab Streamlit + Plotly yang menyatukan semuanya dalam satu browser tab:
 
 ---
 
-## Reproduksi
+## Cara Menjalankan
+
+**Panduan lengkap step-by-step tersedia di [`HOW_TO_RUN.md`](./HOW_TO_RUN.md)** — mencakup setup virtual environment, download dataset MovieLens, build artefak dari nol, menjalankan Streamlit + FastAPI, dan troubleshooting error umum.
+
+Ringkasnya:
+
+```bash
+git clone https://github.com/slisanz/Portofolio-Data-Science.git
+cd Portofolio-Data-Science/latihan2
+python -m venv .venv && source .venv/Scripts/activate   # Windows Git Bash
+pip install -r requirements.txt
+
+# Download ml-latest dari https://grouplens.org/datasets/movielens/
+# lalu ekstrak ke folder ml-latest/
+
+python -m src.data_loader
+python scripts/run_features.py
+python scripts/run_dl_bench.py
+python scripts/run_nlp.py
+
+streamlit run app/streamlit_app.py
+```
+
+Lihat [`HOW_TO_RUN.md`](./HOW_TO_RUN.md) untuk detail lengkap termasuk opsi Docker.
+
+---
+
+## Reproduksi via Makefile
 
 ```bash
 # Instalasi dependensi
