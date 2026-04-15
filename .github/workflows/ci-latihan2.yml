@@ -36,12 +36,3 @@ jobs:
         run: pytest tests/test_evaluator.py -q
         env:
           PYTHONPATH: ${{ github.workspace }}/latihan2
-
-  docker-build:
-    runs-on: ubuntu-latest
-    needs: lint-test
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build image
-        working-directory: latihan2
-        run: docker build -f src/serve/Dockerfile -t movielens-recsys-api:ci .
