@@ -1,19 +1,19 @@
-name: CI latihan2
+name: CI Movie Recommender
 
 on:
   push:
     branches: [main]
     paths:
-      - "latihan2/**"
-      - ".github/workflows/ci-latihan2.yml"
+      - "Movie-Recommender-End-to-End/**"
+      - ".github/workflows/ci-movie-recsys.yml"
   pull_request:
     paths:
-      - "latihan2/**"
-      - ".github/workflows/ci-latihan2.yml"
+      - "Movie-Recommender-End-to-End/**"
+      - ".github/workflows/ci-movie-recsys.yml"
 
 defaults:
   run:
-    working-directory: latihan2
+    working-directory: Movie-Recommender-End-to-End
 
 jobs:
   lint-test:
@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-          cache-dependency-path: latihan2/src/serve/requirements-serve.txt
+          cache-dependency-path: Movie-Recommender-End-to-End/src/serve/requirements-serve.txt
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
@@ -35,4 +35,4 @@ jobs:
       - name: Pytest (lightweight)
         run: pytest tests/test_evaluator.py -q
         env:
-          PYTHONPATH: ${{ github.workspace }}/latihan2
+          PYTHONPATH: ${{ github.workspace }}/Movie-Recommender-End-to-End
