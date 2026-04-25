@@ -272,5 +272,4 @@ If you use this code or refer to this project, please cite the underlying datase
 
 ## Author
 
-Built as a data science portfolio project. 
-RUSLI SANJAYA.
+**Rusli Sanjaya** ([slisanz](https://github.com/slisanz)) — data science portfolio project.
