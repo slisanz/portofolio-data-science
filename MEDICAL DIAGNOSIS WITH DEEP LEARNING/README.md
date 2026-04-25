@@ -5,7 +5,6 @@ End-to-end deep learning pipeline for pediatric chest X-ray pneumonia screening,
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16-FF6F00?logo=tensorflow&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.36-FF4B4B?logo=streamlit&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue)
 
 ---
 
@@ -91,7 +90,8 @@ Recall on PNEUMONIA is the headline number because in a screening context a miss
 │   ├── 02_preprocessing.ipynb
 │   ├── 03_baseline_cnn.ipynb
 │   ├── 04_transfer_learning.ipynb
-│   └── 05_evaluation_gradcam.ipynb
+│   ├── 05_evaluation_gradcam.ipynb
+│   └── 03_&_04_forGoogleColab.ipynb   # merged Colab version of 03 + 04
 ├── src/
 │   ├── data_loader.py        # tf.data pipeline, resplit, class weights
 │   ├── model_builder.py      # baseline CNN, DenseNet121, callbacks
@@ -101,7 +101,8 @@ Recall on PNEUMONIA is the headline number because in a screening context a miss
 │   ├── 1_Dataset_EDA.py
 │   ├── 2_Model_Performance.py
 │   └── 3_About.py
-├── models/                   # produced by training (gitignored)
+├── DASHBOARD/                # app screenshots used in this README
+├── models/                   # produced by training (.keras files gitignored)
 ├── reports/                  # metrics, figures, manifests
 ├── chest_xray/               # dataset, downloaded manually (gitignored)
 ├── app.py                    # Streamlit entry point
