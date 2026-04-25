@@ -1,0 +1,60 @@
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Dataset (download manually from Kaggle, see README)
+chest_xray/
+
+# Trained model weights (host on Hugging Face Hub)
+models/*.keras
+models/*.h5
+models/*.pb
+models/*.tflite
+models/saved_model/
+
+# Reports may include large generated figures; keep small ones
+# (uncomment to exclude figures from git)
+# reports/figures/
+
+# Streamlit local cache
+.streamlit/secrets.toml
+
+# Environment variables
+.env
+.env.local
+
+# Jupyter
+*.ipynb_checkpoints
+.jupyter/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Local working artefacts (Drive download mirror, Colab upload prep, personal notes)
+outputs/
+outputs.zip
+uplodToMyDriveForColab/
+source_data.txt

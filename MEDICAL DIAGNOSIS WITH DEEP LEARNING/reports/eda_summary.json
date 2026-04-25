@@ -1,0 +1,18 @@
+{
+  "total_images": 5856,
+  "per_split": {
+    "train": 5216,
+    "test": 624,
+    "val": 16
+  },
+  "per_label": {
+    "PNEUMONIA": 4273,
+    "NORMAL": 1583
+  },
+  "per_subtype": {
+    "bacteria": 2780,
+    "normal": 1583,
+    "virus": 1493
+  },
+  "train_imbalance_ratio": 2.89
+}

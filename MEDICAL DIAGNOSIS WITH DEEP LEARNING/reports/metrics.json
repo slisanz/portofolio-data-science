@@ -1,0 +1,29 @@
+{
+  "chosen_threshold": 0.72,
+  "densenet_test": {
+    "auc": 0.9091496822266052,
+    "average_precision": 0.9397155683829038,
+    "accuracy": 0.7884615384615384,
+    "precision": 0.7665289256198347,
+    "recall": 0.9512820512820512,
+    "f1": 0.8489702517162471
+  },
+  "baseline_test": {
+    "auc": 0.5850810870041638,
+    "average_precision": 0.668792685762498,
+    "accuracy": 0.6266025641025641,
+    "precision": 0.6260032102728732,
+    "recall": 1.0,
+    "f1": 0.769990128331688
+  },
+  "confusion_matrix_densenet": [
+    [
+      121,
+      113
+    ],
+    [
+      19,
+      371
+    ]
+  ]
+}
