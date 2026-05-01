@@ -1,0 +1,46 @@
+# --- Python ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- ML artifacts ---
+mlruns/
+mlartifacts/
+wandb/
+lightning_logs/
+optuna_study.db
+
+# --- Processed data & large model files ---
+data/processed/
+data/synthetic_qfactor_dataset.csv
+models/*.pt
+models/*.pth
+models/*.pkl
+models/*.joblib
+models/*.cbm
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
