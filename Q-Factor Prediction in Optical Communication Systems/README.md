@@ -1,6 +1,6 @@
 # Q-Factor Prediction in Optical Communication Systems
 
-> **Tagline**: Data engineering (pandas) + 8 model klasik (4 linear + 4 tree) + 3 arsitektur DL (MLP, FT-Transformer, PINN) + uncertainty quantification (MC-Dropout & Split Conformal) + stacking ensemble + Optuna tuning + MLflow tracking + SHAP explainability + dashboard Streamlit (5 halaman).
+> Data engineering (pandas) + 8 classical models (4 linear + 4 tree-based) + 3 DL architectures (MLP, FT-Transformer, PINN) + uncertainty quantification (MC-Dropout & Split Conformal) + stacking ensemble + Optuna tuning + MLflow tracking + SHAP explainability + Streamlit dashboard (5 pages).
 
 [![Python](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/streamlit-app-red.svg)](https://streamlit.io/)
