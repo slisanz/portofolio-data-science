@@ -1,8 +1,29 @@
 # Retail Analytics And Forecasting Platform
 
-> Documented data cleaning policy with empirical impact study + data engineering (pandas plus parquet) + RFM customer segmentation (KMeans with silhouette based k selection) + dual time series forecasting (Prophet vs ARIMA with walk forward CV per branch) + rating regression (Ridge baseline plus Gradient Boosting champion) + SHAP explainability + market basket mining (Apriori with lift ranked rules) + statistical testing (one way ANOVA across branches) + Streamlit dashboard (six pages including interactive what if simulator).
+> From 1003 noisy supermarket transactions to a six page interactive dashboard that forecasts daily revenue per branch, predicts customer ratings with on the spot explanations, and lets a manager test pricing and promotion scenarios in real time.
 
-Multi branch retail analytics on a 1000 transaction supermarket dataset spanning three branches in Myanmar (Yangon, Mandalay, Naypyitaw). The repository covers exploratory analysis, feature engineering, customer segmentation, sales forecasting, rating prediction, and market basket analysis, and ships an interactive Streamlit dashboard with a what if simulator.
+Multi branch retail analytics on a Kaggle supermarket dataset spanning three branches in Myanmar (Yangon, Mandalay, Naypyitaw). The project starts at the raw CSV, applies a documented per column cleaning policy, runs segmentation, forecasting, rating regression, and market basket mining, and lands the results in a Streamlit dashboard the business can actually use.
+
+## Results At A Glance
+
+| Metric | Value |
+|--------|-------|
+| Transactions retained after cleaning | 960 of 1003 raw, the policy beats blanket `dropna` by 3.5 percent MAE |
+| Forecast MAE per branch, best of Prophet vs ARIMA | Branch A 456 USD (ARIMA), Branch B 673 USD (ARIMA), Branch C 665 USD (Prophet) |
+| Rating prediction MAE | 1.42 on a 4 to 10 scale, Ridge champion over Gradient Boosting |
+| Customer segments | three KMeans cohorts, monetary gap of 5.2x between top and bottom segment |
+| Top market basket rule lift | 1.08 (Sports and travel co occurs with Home and lifestyle), product association in this dataset is weak |
+| Branch revenue parity | Branch A 105.2k, Branch B 102.8k, Branch C 104.8k, within 2.4 percent, confirmed by one way ANOVA |
+
+## Business Impact
+
+What this work changes for the operator of the three stores.
+
+1. **Inventory planning**: a 30 day per branch revenue forecast with confidence bands lets store managers pre position stock instead of reacting after stockouts. The model winner is selected per branch, not assumed (ARIMA for Branch A and B, Prophet for Branch C).
+2. **Customer experience**: the rating predictor flags low rating risk from transaction context, and SHAP local contributions tell staff *why* the score is low, so the response can be specific instead of generic.
+3. **Pricing and promotion**: the What If Simulator quantifies the impact of unit price, quantity, payment mix, and member share changes against a frozen baseline. The neutral position returns a delta of zero, which doubles as a built in correctness check.
+4. **Segment marketing**: three customer cohorts split by recency, frequency, and monetary value carry a 5.2x monetary gap between the top and the bottom segment. That gap is large enough to justify segment specific campaigns rather than blanket promotions.
+5. **An honest negative finding**: the strongest market basket rule lifts only 1.08, which means product co occurrence in this register tape is barely above random. The recommendation back to the business is to invest in richer SKU level basket capture before betting on cross sell rules.
 
 ## Stack
 
