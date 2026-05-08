@@ -2,11 +2,13 @@
 
 Pediatric chest X-ray pneumonia screening: EDA + tf.data pipeline (resize, grayscale-to-RGB, augmentation) + stratified val resplit + 2 CNN architectures (custom baseline, DenseNet121 transfer learning with 2-stage fine-tuning) + class-weighted loss + recall-tuned decision threshold + Grad-CAM explainability + Streamlit dashboard (4 pages).
 
-<a href="https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
-
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16-FF6F00?logo=tensorflow&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.36-FF4B4B?logo=streamlit&logoColor=white)
+
+<a href="https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
+
+Try live demo: <https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/>
 
 ---
 
