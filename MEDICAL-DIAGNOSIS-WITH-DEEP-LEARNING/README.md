@@ -6,9 +6,9 @@ Pediatric chest X-ray pneumonia screening: EDA + tf.data pipeline (resize, grays
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16-FF6F00?logo=tensorflow&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.36-FF4B4B?logo=streamlit&logoColor=white)
 
-<a href="https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
+<a href="https://portofolio-data-science-medical-diagnosis-pneumonia-detection.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
 
-Try live demo: <https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/>
+Try live demo: <https://portofolio-data-science-medical-diagnosis-pneumonia-detection.streamlit.app/>
 
 ---
 
