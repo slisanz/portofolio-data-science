@@ -2,9 +2,9 @@
 
 > From 1003 noisy supermarket transactions to a six page interactive dashboard that forecasts daily revenue per branch, predicts customer ratings with on the spot explanations, and lets a manager test pricing and promotion scenarios in real time.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/)
+<a href="https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
 
-**Try it now**: https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/
+**Try it now**: <a href="https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/" target="_blank" rel="noopener noreferrer">https://portofolio-data-science-ryv2ypqwsuzkc7jwnc2ot4.streamlit.app/</a>
 
 Open the live app and use the sidebar to walk through the six pages. The Rating Predictor and What If Simulator are the most interactive entry points; the rest summarise the supporting analysis.
 

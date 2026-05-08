@@ -16,6 +16,10 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+from app.components.theme import inject_sidebar_style
+
+inject_sidebar_style()
+
 st.title("Retail Analytics And Forecasting Platform")
 st.caption(
     "Data engineering (pandas) plus RFM segmentation (KMeans) plus dual forecasting "

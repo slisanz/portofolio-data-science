@@ -13,7 +13,10 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.components.loaders import load_transactions, warn_if_missing
+from app.components.theme import inject_sidebar_style
 from src import config
+
+inject_sidebar_style()
 
 st.title("Branch Compare")
 

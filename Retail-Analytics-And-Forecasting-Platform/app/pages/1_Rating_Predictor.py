@@ -11,7 +11,10 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.components.loaders import load_rating_metrics, load_rating_model, warn_if_missing
+from app.components.theme import inject_sidebar_style
 from src import config
+
+inject_sidebar_style()
 
 st.title("Rating Predictor")
 
