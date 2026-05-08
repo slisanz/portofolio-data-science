@@ -31,19 +31,37 @@ DASHBOARD/                    screenshots of the running dashboard
 
 ## Dashboard Preview
 
-The `DASHBOARD/` folder holds screenshots taken from the running Streamlit app. They give a quick visual reference for the two flagship interactive pages without having to launch the app first.
+The `DASHBOARD/` folder holds screenshots from the running Streamlit app, captured on the two interactive pages that headline the dashboard.
 
-| File | Page | What it shows |
-|------|------|---------------|
-| `DASHBOARD/Rating Predictor1.jpg` | Rating Predictor | Input form for transaction features and the predicted customer rating returned by the Gradient Boosting model. |
-| `DASHBOARD/Rating Predictor2.jpg` | Rating Predictor | SHAP local contribution chart explaining which features pushed the prediction up or down. |
-| `DASHBOARD/wis1.jpg` | What If Simulator | Sliders for unit price, quantity, payment mix, and member share, with the projected monthly revenue. |
-| `DASHBOARD/wis2.jpg` | What If Simulator | Delta view comparing the simulated scenario against the baseline gross income. |
+### Rating Predictor
 
-![Rating Predictor input](DASHBOARD/Rating%20Predictor1.jpg)
-![Rating Predictor SHAP](DASHBOARD/Rating%20Predictor2.jpg)
-![What If Simulator inputs](DASHBOARD/wis1.jpg)
-![What If Simulator delta](DASHBOARD/wis2.jpg)
+A form takes transaction context (branch, customer type, product line, time of day, basket size) and returns a predicted customer rating from the Gradient Boosting model trained in `notebooks/05_rating_prediction.ipynb`. The second view explains the prediction with SHAP local contributions, so the user can see which features pushed the rating up or down.
+
+<table>
+  <tr>
+    <td width="50%"><img src="DASHBOARD/Rating%20Predictor1.jpg" alt="Rating Predictor input form and prediction"></td>
+    <td width="50%"><img src="DASHBOARD/Rating%20Predictor2.jpg" alt="Rating Predictor SHAP contributions"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Input form and predicted rating.</sub></td>
+    <td align="center"><sub>SHAP local contributions for the prediction.</sub></td>
+  </tr>
+</table>
+
+### What If Simulator
+
+Sliders adjust unit price, quantity, member share, and payment mix on top of the cleaned transaction table. The page recomputes projected monthly revenue and gross income against the baseline so the user can quantify the impact of a pricing change, a promotion, or a payment migration. With every slider at the neutral position the delta is exactly zero, which acts as a built in sanity check.
+
+<table>
+  <tr>
+    <td width="50%"><img src="DASHBOARD/wis1.jpg" alt="What If Simulator sliders and projection"></td>
+    <td width="50%"><img src="DASHBOARD/wis2.jpg" alt="What If Simulator delta against baseline"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Sliders and projected monthly revenue.</sub></td>
+    <td align="center"><sub>Delta view against the baseline gross income.</sub></td>
+  </tr>
+</table>
 
 ## Concepts Coverage
 
