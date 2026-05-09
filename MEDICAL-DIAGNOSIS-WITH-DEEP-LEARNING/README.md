@@ -8,13 +8,14 @@ Pediatric chest X-ray pneumonia screening: EDA + tf.data pipeline (resize, grays
 
 <a href="https://portofolio-data-science-medical-diagnosis-pneumonia-detection.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
 
-Try live demo: <https://portofolio-data-science-medical-diagnosis-pneumonia-detection.streamlit.app/>
+**Try live demo:** <https://portofolio-data-science-medical-diagnosis-pneumonia-detection.streamlit.app/>
 
 ---
 
 ## Table of contents
 
 - [Highlights](#highlights)
+- [Methodology](#methodology)
 - [Demo screenshots](#demo-screenshots)
 - [Results](#results)
 - [Project structure](#project-structure)
@@ -39,6 +40,26 @@ Try live demo: <https://portofolio-data-science-medical-diagnosis-pneumonia-dete
 - Class imbalance (PNEUMONIA roughly 2.9 times NORMAL in train) is handled with class weights in the loss.
 - Multi-page Streamlit interface: live predictor with Grad-CAM, dataset and EDA dashboard, model performance dashboard, and a project information page.
 - Pinned dependencies, fixed random seeds, and a numbered notebook sequence for reproducibility.
+
+---
+
+## Methodology
+
+The pipeline below is what runs end to end, from a raw JPEG to a labelled prediction with a saliency map.
+
+![Methodology pipeline](reports/figures/methodology_pipeline.png)
+
+A few words on the choices behind each stage.
+
+**Why a CNN.** A chest X-ray is a 2D image where the diagnostic signal lives in local texture: opacities, consolidations, and the way they sit within the lung field. Convolutional layers are built around that assumption. They share weights across spatial positions, which keeps the parameter count low and gives translation invariance, so a finding in the right lower lobe is recognised the same way as one in the left upper lobe. Stacking convolutions builds a feature hierarchy: edges and ribs at the bottom, shapes and structures in the middle, pneumonia-like patterns near the top. Vision transformers can match or beat CNNs on natural images but typically need an order of magnitude more data than this dataset offers, and classical models would require hand-crafted features that do not generalise.
+
+**Why DenseNet121.** It is the same backbone used in CheXNet (Rajpurkar et al., 2017), which set a strong precedent for chest radiograph models. Dense connectivity propagates low-level features all the way to the head, which matters when fine detail (a faint infiltrate, a subtle opacity) drives the decision. At about 7M parameters it is also lighter than ResNet50 or VGG16, which keeps training feasible on a free Colab T4 and inference fast inside Streamlit.
+
+**Two-stage transfer learning.** Stage one freezes the backbone so the new head learns to map ImageNet features to the X-ray label space without disturbing the pretrained weights. Stage two unfreezes the top 30 layers and continues at a much smaller learning rate (1e-5), nudging the high-level filters towards radiological cues while leaving the low-level filters intact.
+
+**Recall-tuned threshold.** A screening model that misses pneumonia is more harmful than one that sends a false alarm. The default 0.5 sigmoid cutoff is replaced with a value (0.72 in this run) chosen to keep recall on PNEUMONIA above 0.95 on the test set.
+
+**Grad-CAM.** Predictions alone are not enough for a medical context. Grad-CAM at `conv5_block16_concat` produces a heatmap over the last feature map, weighted by the gradient of the predicted class, then overlaid on the original X-ray so the region the model relied on is visible.
 
 ---
 
