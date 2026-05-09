@@ -13,16 +13,9 @@ PALETTE = ["#2E86AB", "#A23B72", "#F18F01", "#6A994E", "#E5C687", "#5DADE2"]
 
 _SIDEBAR_CSS = """
 <style>
-[data-testid="stSidebar"] {
-    min-width: 280px !important;
-    max-width: 280px !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-[data-testid="stSidebarCollapseButton"],
-button[kind="header"][aria-label*="sidebar"],
-div[data-testid="collapsedControl"] {
-    display: none !important;
+[data-testid="stSidebar"][aria-expanded="true"] {
+    min-width: 280px;
+    max-width: 280px;
 }
 [data-testid="stSidebarNav"] a {
     border-radius: 6px;
