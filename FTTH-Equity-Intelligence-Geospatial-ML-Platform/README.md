@@ -2,11 +2,9 @@
 
 > Data cleaning pipeline (cp1252 mojibake handling, schema validation) + geospatial layer (H3 hex indexing, WGS84 / Lambert-93 auto-detection, haversine) + composite equity index (3 sub-indicators with rank-percentile normalisation, deterministic snapshot reference) + LightGBM classifier (GroupKFold CV by commune, isotonic calibration, leakage-safe feature set with unit-test guards) + KMeans + PCA commune segmentation + Streamlit dashboard (5 pages, custom theme) + pytest suite (22 tests, anti-leakage guards) + CI workflow.
 
-### [Live demo on Streamlit Cloud →](https://portofolio-data-science-ftth-equity-intelligence-geospatial.streamlit.app/)
+<a href="https://portofolio-data-science-ftth-equity-intelligence-geospatial.streamlit.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
 
-[![Open the dashboard](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://portofolio-data-science-ftth-equity-intelligence-geospatial.streamlit.app/)
-
-Open the link above to explore the **Map Explorer** (commune filter, point sample / hex aggregation) and the **Deployment Predictor** (calibrated `P(lagging)` what-if). No install needed.
+**Try live demo:** <https://portofolio-data-science-ftth-equity-intelligence-geospatial.streamlit.app/>
 
 Building-level analysis of fibre-to-the-home (FTTH) deployment across Troyes Champagne Métropole, framed as a digital-equity problem. Source: Arcep's open observatory of fixed broadband deployments.
 
